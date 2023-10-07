@@ -48,6 +48,10 @@ function imageOptions(action) {
                 imageOptions("show");
             }
 
+            button2.onclick = function() {
+                resetImage();
+            }
+
             button1Icon.innerText = "upload";
             button1Text.innerText = "Upload image";
 
