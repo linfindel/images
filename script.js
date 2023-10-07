@@ -163,10 +163,10 @@ function generateMaterialDesignPalette(imageURL, callback) {
         if (swatches) {
             // Extract Material Design color palette
             const palette = {
-                primary: swatches.Vibrant.getHex(),
+                accent: swatches.Vibrant.getHex(),
                 primaryDark: swatches.DarkVibrant.getHex(),
                 primaryLight: swatches.LightVibrant.getHex(),
-                accent: swatches.Muted.getHex(),
+                primary: swatches.Muted.getHex(),
             };
   
             // Execute the callback function with the generated palette
