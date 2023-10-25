@@ -16,9 +16,11 @@ console.log(queryString);
 const urlParams = new URLSearchParams(queryString);
 const url = urlParams.get('url');
 
-imageElement.src = url;
-document.getElementById("button3").style.display = "flex";
-document.getElementById("filters").href = `filters.html?url=${url}`;
+if (url) {
+    imageElement.src = url;
+    document.getElementById("button3").style.display = "flex";
+    document.getElementById("filters").href = `filters.html?url=${url}`;
+}
 
 generateMaterialDesignPalette(url, (error, palette) => {
     if (error) {
