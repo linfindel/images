@@ -4,11 +4,59 @@ const navbar = document.getElementById("navbar");
 const buttons = document.getElementById("buttons");
 const button1 = document.getElementById("button1");
 const button2 = document.getElementById("button2");
+const button3 = document.getElementById("button3");
 
 const button1Icon = document.getElementById("button1-icon");
 const button1Text = document.getElementById("button1-text");
 const button2Icon = document.getElementById("button2-icon");
 const button2Text = document.getElementById("button2-text");
+
+const queryString = window.location.search;
+console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
+const url = urlParams.get('url');
+
+imageElement.src = url;
+document.getElementById("button3").style.display = "flex";
+document.getElementById("filters").href = `filters.html?url=${url}`;
+
+generateMaterialDesignPalette(url, (error, palette) => {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log("Material Design Palette:", palette);
+
+        // Set the background color of buttons with alpha 0.25
+        button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+        button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+        button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+
+        // Change background color on hover to alpha 0.5
+        button1.addEventListener("mouseover", () => {
+            button1.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+        });
+        button1.addEventListener("mouseout", () => {
+            button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+        });
+
+        button2.addEventListener("mouseover", () => {
+            button2.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+        });
+        button2.addEventListener("mouseout", () => {
+            button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+        });
+
+        button3.addEventListener("mouseover", () => {
+            button3.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+        });
+        button3.addEventListener("mouseout", () => {
+            button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+        });
+
+        document.getElementById("navbar").style.backgroundColor = generateRGBA(palette.accent, 0.25);
+        
+    }
+});
 
 function resetImage() {
     location.reload();
@@ -78,6 +126,7 @@ function uploadLink() {
             // Set the background color of buttons with alpha 0.25
             button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
             button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+            button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
 
             // Change background color on hover to alpha 0.5
             button1.addEventListener("mouseover", () => {
@@ -94,12 +143,22 @@ function uploadLink() {
                 button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
             });
 
+            button3.addEventListener("mouseover", () => {
+                button3.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+            });
+            button3.addEventListener("mouseout", () => {
+                button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+            });
+
             document.getElementById("navbar").style.backgroundColor = generateRGBA(palette.accent, 0.25);
-            // You can use the palette to style your UI elements
+            
         }
     });
 
     imageOptions();
+
+    document.getElementById("button3").style.display = "flex";
+    document.getElementById("filters").href = `filters.html?url=${url}`;
 }
 
 function uploadFile() {
@@ -139,8 +198,10 @@ function uploadFile() {
                         });
             
                         document.getElementById("navbar").style.backgroundColor = generateRGBA(palette.accent, 0.25);
-                        // You can use the palette to style your UI elements
+                        
                     }
+
+                    document.getElementById("filters").href = "";
                 });
             };
             reader.readAsDataURL(file); // Read the file as a data URL
@@ -162,7 +223,7 @@ function generateMaterialDesignPalette(imageURL, callback) {
         // Create a Vibrant.js object to extract colors from the image
         const vibrant = new Vibrant(img);
         const swatches = vibrant.swatches();
-  
+
         // Check if swatches were successfully generated
         if (swatches) {
             // Extract Material Design color palette

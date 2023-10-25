@@ -13,20 +13,6 @@
         <h1>Image Viewer</h1>
     </div>
 
-    <div style="
-    backdrop-filter: blur(10000px) brightness(0.25) saturate(300%);
-    -webkit-backdrop-filter: blur(10000px) brightness(0.25) saturate(300%);
-
-    margin-top: -5rem;
-
-    position: absolute;
-
-    width: 1000%;
-    height: 1000%;
-
-    z-index: -1;
-    "></div>
-
     <img onload="document.getElementById('buttons').style.opacity = 1" loading="eager" id="image" src="https://picsum.photos/1080/500" style="max-width: 60vw; max-height: 60vh;">
 
     <div id="buttons" style="opacity: 0;" class="row">
@@ -39,6 +25,13 @@
             <span id="button2-icon" class="material-symbols-rounded">reset_image</span>
             <span id="button2-text">Reset image</span>
         </button>
+
+        <a id="filters">
+            <button id="button3" style="display: none;">
+                <span class="material-symbols-rounded">tune</span>
+                Filters
+            </button>
+        </a>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vibrant.js/1.0.0/Vibrant.min.js"></script>

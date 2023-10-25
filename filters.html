@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Viewer</title>
+
+    <link rel="stylesheet" href="https://nadir-software.github.io/nadircss/nadir.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <div class="column" style="align-items: flex-start; width: 100%;">
+        <div id="navbar" class="navbar">
+            <h1>Image Viewer</h1>
+        </div>
+
+        <a href="index.html" id="back-link">
+            <button id="back" tabindex="-99">
+                <span class="material-symbols-rounded">arrow_back</span>
+                Back
+            </button>
+        </a>
+    </div>
+
+    <img id="img" style="max-width: 60vw; max-height: 60vh;" crossorigin="anonymous">
+
+    <div class="card column" id="filters" style="width: 50vw;">
+        <h1>Filters</h1>
+
+        <button onclick="exportImage()" id="export">
+            <span class="material-symbols-rounded">content_copy</span>
+            <span id="export-text">Copy link to filtered image</span>
+        </button>
+
+        <div class="row" style="flex-wrap: wrap;">
+            <div id="blur" class="search-box">
+                <span class="material-symbols-rounded">blur_on</span>
+                <input id="blur-input" oninput="addFilter('blur')" placeholder="Blur (px)" type="text" class="input-search">
+            </div>
+
+            <div id="brightness" class="search-box">
+                <span class="material-symbols-rounded">brightness_medium</span>
+                <input id="brightness-input" oninput="addFilter('brightness')" placeholder="Brightness (%)" type="text" class="input-search">
+            </div>
+
+            <div id="contrast" class="search-box">
+                <span class="material-symbols-rounded">contrast</span>
+                <input id="contrast-input" oninput="addFilter('contrast')" placeholder="Contrast (%)" type="text" class="input-search">
+            </div>
+
+            <div id="grayscale" class="search-box">
+                <span class="material-symbols-rounded">filter_b_and_w</span>
+                <input id="grayscale-input" oninput="addFilter('grayscale')" placeholder="Grayscale (%)" type="text" class="input-search">
+            </div>
+
+            <div id="hue-rotate" class="search-box">
+                <span class="material-symbols-rounded">colorize</span>
+                <input id="hue-rotate-input" oninput="addFilter('hue-rotate')" placeholder="Hue rotate (deg)" type="text" class="input-search">
+            </div>
+
+            <div id="invert" class="search-box">
+                <span class="material-symbols-rounded">invert_colors</span>
+                <input id="invert-input" oninput="addFilter('invert')" placeholder="Invert (%)" type="text" class="input-search">
+            </div>
+
+            <div id="opacity" class="search-box">
+                <span class="material-symbols-rounded">opacity</span>
+                <input id="opacity-input" oninput="addFilter('opacity')" placeholder="Opacity (%)" type="text" class="input-search">
+            </div>
+
+            <div id="saturate" class="search-box">
+                <span class="material-symbols-rounded">colors</span>
+                <input id="saturate-input" oninput="addFilter('saturate')" placeholder="Saturation (%)" type="text" class="input-search">
+            </div>
+
+            <div id="sepia" class="search-box">
+                <span class="material-symbols-rounded">history_edu</span>
+                <input id="sepia-input" oninput="addFilter('sepia')" placeholder="Sepia (%)" type="text" class="input-search">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vibrant.js/1.0.0/Vibrant.min.js"></script>
+    <script src="filters.js"></script>
+</body>
+</html>
