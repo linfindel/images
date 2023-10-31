@@ -29,7 +29,6 @@ generateMaterialDesignPalette(url, (error, palette) => {
         document.getElementById("hue-rotate").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         document.getElementById("invert").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         document.getElementById("opacity").style.backgroundColor = generateRGBA(palette.accent, 0.25);
-        document.getElementById("original-button").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         document.getElementById("saturate").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         document.getElementById("sepia").style.backgroundColor = generateRGBA(palette.accent, 0.25);
 
@@ -105,14 +104,6 @@ generateMaterialDesignPalette(url, (error, palette) => {
             document.getElementById("opacity").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         })
 
-        document.getElementById("original-button").addEventListener("mouseover", () => {
-            document.getElementById("original-button").style.backgroundColor = generateRGBA(palette.accent, 0.5);
-        })
-
-        document.getElementById("original-button").addEventListener("mouseout", () => {
-            document.getElementById("original-button").style.backgroundColor = generateRGBA(palette.accent, 0.25);
-        })
-
         document.getElementById("saturate").addEventListener("focusin", () => {
             document.getElementById("saturate").style.backgroundColor = generateRGBA(palette.accent, 0.5);
         })
@@ -152,6 +143,8 @@ function generateMaterialDesignPalette(imageURL, callback) {
                 primaryLight: swatches.LightVibrant.getHex(),
                 primary: swatches.Muted.getHex(),
             };
+
+            localStorage.setItem("accent", palette.accent);
   
             // Execute the callback function with the generated palette
             callback(null, palette);
@@ -326,6 +319,19 @@ function addFilter(filter) {
             img.style.filter += `sepia(${document.getElementById("sepia-input").value / 100})`;
         }
     }
+
+    document.getElementById("original-button").removeAttribute("inert");
+    document.getElementById("original-button").removeAttribute("class");
+
+    document.getElementById("original-button").style.backgroundColor = generateRGBA(localStorage.getItem("accent"), 0.25);
+
+    document.getElementById("original-button").addEventListener("mouseover", () => {
+        document.getElementById("original-button").style.backgroundColor = generateRGBA(localStorage.getItem("accent"), 0.5);
+    })
+
+    document.getElementById("original-button").addEventListener("mouseout", () => {
+        document.getElementById("original-button").style.backgroundColor = generateRGBA(localStorage.getItem("accent"), 0.25);
+    })
 
     filters = img.style.filter;
     document.getElementById("original-text").innerText = "Show original image";
