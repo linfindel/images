@@ -119,6 +119,17 @@ generateMaterialDesignPalette(url, (error, palette) => {
         document.getElementById("sepia").addEventListener("focusout", () => {
             document.getElementById("sepia").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         })
+
+        if (calculateContrastRatio([120, 120, 120], `${palette.accent}40`) < 4.5) {
+            var placeholderStyles = document.createElement("style");
+            placeholderStyles.innerHTML = `
+            ::placeholder {
+                color: rgb(200, 200, 200);
+            }
+            `;
+
+            document.body.appendChild(placeholderStyles);
+        }
     }
 })
 
@@ -388,4 +399,42 @@ function compare() {
 
         document.getElementById("original-text").innerText = "Show filtered image";
     }
+}
+
+function calculateContrastRatio(foreground, background) {
+    console.log(`Foreground: ${foreground}`);
+    console.log(`Background: ${background}`);
+
+    // Calculate contrast ratio
+    const fgRgb = foreground;
+    const bgRgb = hexToRgb(background);
+
+    const fgLuminance = getRelativeLuminance(fgRgb);
+
+    console.log(`fgLuminance: ${fgLuminance}`);
+
+    const bgLuminance = getRelativeLuminance(bgRgb);
+
+    console.log(`bgLuminance: ${bgLuminance}`);
+
+    var contrastRatio = (Math.max(fgLuminance, bgLuminance) + 0.05) / (Math.min(fgLuminance, bgLuminance) + 0.05);
+
+    return contrastRatio;
+}
+
+function hexToRgb(hex) {
+    // Convert a hex color to RGB values
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return [r, g, b];
+}
+
+function getRelativeLuminance(rgb) {
+    // Calculate relative luminance
+    const [r, g, b] = rgb.map((c) => {
+        const sRGB = c / 255;
+        return sRGB <= 0.03928 ? sRGB / 12.92 : Math.pow((sRGB + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
