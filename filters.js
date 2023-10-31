@@ -4,9 +4,13 @@ const urlParams = new URLSearchParams(queryString);
 const url = urlParams.get('url');
 
 const img = document.getElementById("img");
+const originalImg = document.getElementById("original");
 
 img.src = url;
+originalImg.src = url;
 document.getElementById("back-link").href = `index.html?url=${url}`;
+
+var filters;
 
 generateMaterialDesignPalette(url, (error, palette) => {
     if (error) {
@@ -27,6 +31,7 @@ generateMaterialDesignPalette(url, (error, palette) => {
         document.getElementById("hue-rotate").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         document.getElementById("invert").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         document.getElementById("opacity").style.backgroundColor = generateRGBA(palette.accent, 0.25);
+        document.getElementById("original-button").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         document.getElementById("saturate").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         document.getElementById("sepia").style.backgroundColor = generateRGBA(palette.accent, 0.25);
 
@@ -100,6 +105,14 @@ generateMaterialDesignPalette(url, (error, palette) => {
 
         document.getElementById("opacity").addEventListener("focusout", () => {
             document.getElementById("opacity").style.backgroundColor = generateRGBA(palette.accent, 0.25);
+        })
+
+        document.getElementById("original-button").addEventListener("mouseover", () => {
+            document.getElementById("original-button").style.backgroundColor = generateRGBA(palette.accent, 0.5);
+        })
+
+        document.getElementById("original-button").addEventListener("mouseout", () => {
+            document.getElementById("original-button").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         })
 
         document.getElementById("saturate").addEventListener("focusin", () => {
@@ -315,6 +328,8 @@ function addFilter(filter) {
             img.style.filter += `sepia(${document.getElementById("sepia-input").value / 100})`;
         }
     }
+
+    filters = img.style.filter;
 }
 
 function exportImage() {
@@ -352,4 +367,18 @@ function copyImageURI(uri) {
     setTimeout(() => {
         document.getElementById("export-text").innerText = "Copy link to filtered image";
     }, 1000);
+}
+
+function compare() {
+    if (img.style.filter == "") {
+        img.style.filter = filters;
+
+        document.getElementById("original-text").innerText = "Show original image";
+    }
+
+    else {
+        img.style.filter = "";
+
+        document.getElementById("original-text").innerText = "Show filtered image";
+    }
 }
