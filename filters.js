@@ -4,10 +4,8 @@ const urlParams = new URLSearchParams(queryString);
 const url = urlParams.get('url');
 
 const img = document.getElementById("img");
-const originalImg = document.getElementById("original");
 
 img.src = url;
-originalImg.src = url;
 document.getElementById("back-link").href = `index.html?url=${url}`;
 
 var filters;
