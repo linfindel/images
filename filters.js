@@ -328,6 +328,7 @@ function addFilter(filter) {
     }
 
     filters = img.style.filter;
+    document.getElementById("original-text").innerText = "Show original image";
 }
 
 function exportImage() {
