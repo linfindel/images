@@ -120,7 +120,7 @@ generateMaterialDesignPalette(url, (error, palette) => {
             document.getElementById("sepia").style.backgroundColor = generateRGBA(palette.accent, 0.25);
         })
 
-        if (calculateContrastRatio([120, 120, 120], `${palette.accent}40`) < 4.5) {
+        if (calculateContrastRatio([120, 120, 120], `${palette.accent}40`) < 3.5) {
             var placeholderStyles = document.createElement("style");
             placeholderStyles.innerHTML = `
             ::placeholder {
