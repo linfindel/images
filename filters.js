@@ -362,9 +362,11 @@ function copyImageURI(uri) {
     navigator.clipboard.writeText(uri);
 
     document.getElementById("export-text").innerText = "Copied link to filtered image";
+    document.getElementById("export-icon").innerText = "check";
 
     setTimeout(() => {
         document.getElementById("export-text").innerText = "Copy link to filtered image";
+        document.getElementById("export-icon").innerText = "content_copy";
     }, 1000);
 }
 
