@@ -1,56 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Viewer</title>
 
-    <link
-      rel="stylesheet"
-      href="https://nadir-software.github.io/nadircss/nadir.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
-    />
-  </head>
-  <body style="background-size: cover; background-repeat: no-repeat">
+    <link rel="stylesheet" href="https://nadir-software.github.io/nadircss/nadir.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body style="background-size: cover; background-repeat: no-repeat;">
     <div class="navbar-column">
-      <div id="navbar" class="navbar">
-        <h1 id="navbar-text">Loading...</h1>
-      </div>
+        <div id="navbar" class="navbar">
+            <h1 id="navbar-text">Loading...</h1>
+        </div>
 
-      <div id="buttons" style="opacity: 0" class="row">
-        <button id="button1" onclick="imageOptions('show')">
-          <span id="button1-icon" class="material-symbols-rounded">upload</span>
-          <span id="button1-text">Upload image</span>
-        </button>
-
-        <button id="button2" onclick="resetImage()">
-          <span id="button2-icon" class="material-symbols-rounded"
-            >reset_image</span
-          >
-          <span id="button2-text">Reset image</span>
-        </button>
-
-        <a id="filters">
-          <button id="button3" style="display: none">
-            <span class="material-symbols-rounded">tune</span>
-            Filters
-          </button>
-        </a>
-      </div>
+        <div id="buttons" style="opacity: 0;" class="row">
+            <button id="button1" onclick="imageOptions('show')">
+                <span id="button1-icon" class="material-symbols-rounded">upload</span>
+                <span id="button1-text">Upload image</span>
+            </button>
+    
+            <button id="button2" onclick="resetImage()">
+                <span id="button2-icon" class="material-symbols-rounded">reset_image</span>
+                <span id="button2-text">Reset image</span>
+            </button>
+    
+            <a id="filters">
+                <button id="button3" style="display: none;">
+                    <span class="material-symbols-rounded">tune</span>
+                    Filters
+                </button>
+            </a>
+        </div>
     </div>
 
-    <img
-      onload="document.getElementById('navbar-text').innerText = 'Image Viewer'; document.getElementById('buttons').style.opacity = 1"
-      loading="eager"
-      id="image"
-      src="https://picsum.photos/1080/500"
-      style="max-width: 90vw; max-height: 90vh"
-    />
+    <img onload="document.getElementById('navbar-text').innerText = 'Image Viewer'; document.getElementById('buttons').style.opacity = 1" loading="eager" id="image" src="https://picsum.photos/1080/500" style="max-width: 80vw; max-height: 80vh;">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vibrant.js/1.0.0/Vibrant.min.js"></script>
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
