@@ -11,10 +11,15 @@
 <body style="background-size: cover; background-repeat: no-repeat;">
     <div class="navbar-column">
         <div id="navbar" class="navbar">
-            <h1 id="navbar-text">Loading...</h1>
+            <h1 id="navbar-text">Image Viewer</h1>
         </div>
 
-        <div id="buttons" style="opacity: 0;" class="row">
+        <div id="buttons" class="row">
+            <button onclick="location.href = 'about.html'" id="button4">
+                <span class="material-symbols-rounded">info</span>
+                About
+            </button>
+
             <button id="button1" onclick="imageOptions('show')">
                 <span id="button1-icon" class="material-symbols-rounded">upload</span>
                 <span id="button1-text">Upload image</span>
@@ -34,7 +39,7 @@
         </div>
     </div>
 
-    <img onload="document.getElementById('navbar-text').innerText = 'Image Viewer'; document.getElementById('buttons').style.opacity = 1" loading="eager" id="image" src="https://picsum.photos/1080/500" style="max-width: 80vw; max-height: 80vh;">
+    <img id="image" style="max-width: 80vw; max-height: 80vh;">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vibrant.js/1.0.0/Vibrant.min.js"></script>
     <script src="script.js"></script>

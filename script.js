@@ -5,6 +5,7 @@ const buttons = document.getElementById("buttons");
 const button1 = document.getElementById("button1");
 const button2 = document.getElementById("button2");
 const button3 = document.getElementById("button3");
+const button4 = document.getElementById("button4");
 
 const button1Icon = document.getElementById("button1-icon");
 const button1Text = document.getElementById("button1-text");
@@ -14,51 +15,59 @@ const button2Text = document.getElementById("button2-text");
 const queryString = window.location.search;
 console.log(queryString);
 const urlParams = new URLSearchParams(queryString);
-const url = urlParams.get('url');
+const urlParam = urlParams.get('url');
 
-if (url) {
-    imageElement.src = url;
+if (urlParam) {
+    imageElement.src = urlParam;
     document.getElementById("button3").style.display = "flex";
-    document.getElementById("filters").href = `filters.html?url=${url}`;
-}
+    document.getElementById("filters").href = `filters.html?url=${urlParam}`;
 
-generateMaterialDesignPalette(url, (error, palette) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log("Material Design Palette:", palette);
-
-        // Set the background color of buttons with alpha 0.25
-        button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
-        button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
-        button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
-
-        // Change background color on hover to alpha 0.5
-        button1.addEventListener("mouseover", () => {
-            button1.style.backgroundColor = generateRGBA(palette.accent, 0.5);
-        });
-        button1.addEventListener("mouseout", () => {
+    generateMaterialDesignPalette(url, (error, palette) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("Material Design Palette:", palette);
+    
+            // Set the background color of buttons with alpha 0.25
             button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
-        });
-
-        button2.addEventListener("mouseover", () => {
-            button2.style.backgroundColor = generateRGBA(palette.accent, 0.5);
-        });
-        button2.addEventListener("mouseout", () => {
             button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
-        });
-
-        button3.addEventListener("mouseover", () => {
-            button3.style.backgroundColor = generateRGBA(palette.accent, 0.5);
-        });
-        button3.addEventListener("mouseout", () => {
             button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
-        });
-
-        document.getElementById("navbar").style.backgroundColor = generateRGBA(palette.accent, 0.25);
-        
-    }
-});
+            button4.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+    
+            // Change background color on hover to alpha 0.5
+            button1.addEventListener("mouseover", () => {
+                button1.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+            });
+            button1.addEventListener("mouseout", () => {
+                button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+            });
+    
+            button2.addEventListener("mouseover", () => {
+                button2.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+            });
+            button2.addEventListener("mouseout", () => {
+                button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+            });
+    
+            button3.addEventListener("mouseover", () => {
+                button3.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+            });
+            button3.addEventListener("mouseout", () => {
+                button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+            });
+    
+            button4.addEventListener("mouseover", () => {
+                button4.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+            });
+            button4.addEventListener("mouseout", () => {
+                button4.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+            });
+    
+            document.getElementById("navbar").style.backgroundColor = generateRGBA(palette.accent, 0.25);
+            
+        }
+    });
+}
 
 function resetImage() {
     location.reload();
@@ -129,6 +138,7 @@ function uploadLink() {
             button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
             button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
             button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+            button4.style.backgroundColor = generateRGBA(palette.accent, 0.25);
 
             // Change background color on hover to alpha 0.5
             button1.addEventListener("mouseover", () => {
@@ -150,6 +160,13 @@ function uploadLink() {
             });
             button3.addEventListener("mouseout", () => {
                 button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+            });
+
+            button4.addEventListener("mouseover", () => {
+                button4.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+            });
+            button4.addEventListener("mouseout", () => {
+                button4.style.backgroundColor = generateRGBA(palette.accent, 0.25);
             });
 
             document.getElementById("navbar").style.backgroundColor = generateRGBA(palette.accent, 0.25);
@@ -183,6 +200,8 @@ function uploadFile() {
                         // Set the background color of buttons with alpha 0.25
                         button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
                         button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+                        button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+                        button4.style.backgroundColor = generateRGBA(palette.accent, 0.25);
             
                         // Change background color on hover to alpha 0.5
                         button1.addEventListener("mouseover", () => {
@@ -197,6 +216,20 @@ function uploadFile() {
                         });
                         button2.addEventListener("mouseout", () => {
                             button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+                        });
+
+                        button3.addEventListener("mouseover", () => {
+                            button3.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+                        });
+                        button3.addEventListener("mouseout", () => {
+                            button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
+                        });
+
+                        button4.addEventListener("mouseover", () => {
+                            button4.style.backgroundColor = generateRGBA(palette.accent, 0.5);
+                        });
+                        button4.addEventListener("mouseout", () => {
+                            button4.style.backgroundColor = generateRGBA(palette.accent, 0.25);
                         });
             
                         document.getElementById("navbar").style.backgroundColor = generateRGBA(palette.accent, 0.25);
