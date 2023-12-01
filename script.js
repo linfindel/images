@@ -70,7 +70,7 @@ if (urlParam) {
 }
 
 function resetImage() {
-    location.reload();
+    location.href = window.location.origin;
 }
 
 function imageOptions(action) {
