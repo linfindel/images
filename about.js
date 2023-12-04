@@ -1,4 +1,4 @@
-const username = 'Nadir-Software';
+const username = 'linfindel';
 const repo = 'images';
 
 fetch(`https://api.github.com/repos/${username}/${repo}/commits?per_page=1`)
