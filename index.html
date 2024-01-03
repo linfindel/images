@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Viewer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Viewer</title>
 
-    <link rel="stylesheet" href="https://linfindel.github.io/nadircss/nadir.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://linfindel.github.io/nadircss/nadir.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body style="background-size: cover; background-repeat: no-repeat;">
-    <div class="navbar-column">
-        <div id="navbar" class="navbar">
-            <h1 id="navbar-text">Image Viewer</h1>
-        </div>
-
-        <div id="buttons" class="row">
-            <button onclick="location.href = 'about.html'" id="button4">
-                <span class="material-symbols-rounded">info</span>
-                About
-            </button>
-
-            <button id="button1" onclick="imageOptions('show')">
-                <span id="button1-icon" class="material-symbols-rounded">upload</span>
-                <span id="button1-text">Upload image</span>
-            </button>
-    
-            <button id="button2" onclick="resetImage()">
-                <span id="button2-icon" class="material-symbols-rounded">reset_image</span>
-                <span id="button2-text">Reset image</span>
-            </button>
-    
-            <a id="filters">
-                <button id="button3" style="display: none;">
-                    <span class="material-symbols-rounded">tune</span>
-                    Filters
-                </button>
-            </a>
-        </div>
+  <div class="navbar-column">
+    <div id="navbar" class="navbar">
+      <h1 id="navbar-text">Image Viewer</h1>
     </div>
 
-    <img id="image" style="max-width: 80vw; max-height: 80vh;">
+    <div id="buttons" class="row">
+      <button onclick="location.href = 'about.html'" id="button4">
+        <span class="material-symbols-rounded">info</span>
+        About
+      </button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vibrant.js/1.0.0/Vibrant.min.js"></script>
-    <script src="script.js"></script>
+      <button id="button1" onclick="imageOptions('show')">
+        <span id="button1-icon" class="material-symbols-rounded">upload</span>
+        <span id="button1-text">Upload image</span>
+      </button>
+    
+      <button id="button2" onclick="resetImage()">
+        <span id="button2-icon" class="material-symbols-rounded">reset_image</span>
+        <span id="button2-text">Reset image</span>
+      </button>
+    
+      <a id="filters">
+        <button id="button3" style="display: none;">
+          <span class="material-symbols-rounded">tune</span>
+          Filters
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <img id="image" style="max-width: 80vw; max-height: 80vh;">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vibrant.js/1.0.0/Vibrant.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
