@@ -72,7 +72,7 @@ if (urlParam) {
 }
 
 function resetImage() {
-  location.href = window.location.origin;
+  location.href = ".";
 }
 
 function imageOptions(action) {
