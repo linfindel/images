@@ -13,7 +13,6 @@ const button2Icon = document.getElementById("button2-icon");
 const button2Text = document.getElementById("button2-text");
 
 const queryString = window.location.search;
-console.log(queryString);
 const urlParams = new URLSearchParams(queryString);
 const urlParam = urlParams.get('url');
 
@@ -27,9 +26,7 @@ if (urlParam) {
       console.error(error);
     }
     
-    else {
-      console.log("Material Design Palette:", palette);
-    
+    else {    
       // Set the background color of buttons with alpha 0.25
       button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
       button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
@@ -136,8 +133,6 @@ function uploadLink() {
     }
     
     else {
-      console.log("Material Design Palette:", palette);
-
       // Set the background color of buttons with alpha 0.25
       button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
       button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
@@ -201,8 +196,6 @@ function uploadFile() {
           }
           
           else {
-            console.log("Material Design Palette:", palette);           
-
             // Set the background color of buttons with alpha 0.25
             button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
             button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);

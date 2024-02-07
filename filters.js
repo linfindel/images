@@ -130,21 +130,15 @@ generateMaterialDesignPalette(url, (error, palette) => {
   }
 })
 
-// Function to generate a Material Design color palette from an image URL
 function generateMaterialDesignPalette(imageURL, callback) {
-  // Create an image element to load the image
   const img = new Image();
-  img.crossOrigin = "Anonymous"; // Enable cross-origin access to the image
+  img.crossOrigin = "Anonymous";
   
-  // Set up an event listener for when the image is loaded
   img.onload = function () {
-    // Create a Vibrant.js object to extract colors from the image
     const vibrant = new Vibrant(img);
     const swatches = vibrant.swatches();
 
-    // Check if swatches were successfully generated
     if (swatches) {
-      // Extract Material Design color palette
       const palette = {
         accent: swatches.Vibrant.getHex(),
         primaryDark: swatches.DarkVibrant.getHex(),
@@ -154,32 +148,25 @@ function generateMaterialDesignPalette(imageURL, callback) {
 
       localStorage.setItem("accent", palette.accent);
   
-      // Execute the callback function with the generated palette
       callback(null, palette);
     }
       
     else {
-      // Error handling if swatches couldn't be generated
       callback("Failed to generate swatches", null);
     }
   };
   
-  // Set the image source to the provided URL
   img.src = imageURL;
 }
 
-// Function to generate an RGBA value with a specified alpha
 function generateRGBA(hex, alpha) {
-  // Remove the "#" symbol if present
   hex = hex.replace(/^#/, '');
 
-  // Parse the hex color to RGB components
   const bigint = parseInt(hex, 16);
   const red = (bigint >> 16) & 255;
   const green = (bigint >> 8) & 255;
   const blue = bigint & 255;
 
-  // Create the RGBA string
   return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 }
 
@@ -397,7 +384,6 @@ function compare() {
 }
 
 function calculateContrastRatio(foreground, background) {
-  // Calculate contrast ratio
   const fgRgb = foreground;
   const bgRgb = hexToRgb(background);
 
@@ -411,7 +397,6 @@ function calculateContrastRatio(foreground, background) {
 }
 
 function hexToRgb(hex) {
-  // Convert a hex color to RGB values
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
@@ -419,7 +404,6 @@ function hexToRgb(hex) {
 }
 
 function getRelativeLuminance(rgb) {
-  // Calculate relative luminance
   const [r, g, b] = rgb.map((c) => {
     const sRGB = c / 255;
     return sRGB <= 0.03928 ? sRGB / 12.92 : Math.pow((sRGB + 0.055) / 1.055, 2.4);
