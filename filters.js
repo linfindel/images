@@ -1,5 +1,4 @@
 const queryString = window.location.search;
-console.log(queryString);
 const urlParams = new URLSearchParams(queryString);
 const url = urlParams.get('url');
 
@@ -16,8 +15,6 @@ generateMaterialDesignPalette(url, (error, palette) => {
   }
 
   else {
-    console.log("Material Design Palette:", palette);
-
     document.getElementById("navbar").style.backgroundColor = generateRGBA(palette.accent, 0.25);
     document.getElementById("back").style.backgroundColor = generateRGBA(palette.accent, 0.25);
     document.getElementById("export").style.backgroundColor = generateRGBA(palette.accent, 0.25);
@@ -362,10 +359,8 @@ function exportImage() {
   imgElement.crossOrigin = "anonymous";
   imgElement.onload = function() {
     ctx.drawImage(imgElement, 0, 0, canvas.width, canvas.height);
-        
 
     const dataURI = canvas.toDataURL("image/jpeg");
-    console.log(dataURI);
 
     document.getElementById("export").onclick = function() {
       copyImageURI(dataURI);
@@ -402,20 +397,13 @@ function compare() {
 }
 
 function calculateContrastRatio(foreground, background) {
-  console.log(`Foreground: ${foreground}`);
-  console.log(`Background: ${background}`);
-
   // Calculate contrast ratio
   const fgRgb = foreground;
   const bgRgb = hexToRgb(background);
 
   const fgLuminance = getRelativeLuminance(fgRgb);
 
-  console.log(`fgLuminance: ${fgLuminance}`);
-
   const bgLuminance = getRelativeLuminance(bgRgb);
-
-  console.log(`bgLuminance: ${bgLuminance}`);
 
   var contrastRatio = (Math.max(fgLuminance, bgLuminance) + 0.05) / (Math.min(fgLuminance, bgLuminance) + 0.05);
 
