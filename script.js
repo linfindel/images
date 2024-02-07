@@ -27,13 +27,11 @@ if (urlParam) {
     }
     
     else {    
-      // Set the background color of buttons with alpha 0.25
       button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
       button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
       button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
       button4.style.backgroundColor = generateRGBA(palette.accent, 0.25);
 
-      // Change background color on hover to alpha 0.5
       button1.addEventListener("mouseover", () => {
         button1.style.backgroundColor = generateRGBA(palette.accent, 0.5);
       });
@@ -133,13 +131,11 @@ function uploadLink() {
     }
     
     else {
-      // Set the background color of buttons with alpha 0.25
       button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
       button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
       button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
       button4.style.backgroundColor = generateRGBA(palette.accent, 0.25);
 
-      // Change background color on hover to alpha 0.5
       button1.addEventListener("mouseover", () => {
         button1.style.backgroundColor = generateRGBA(palette.accent, 0.5);
       });
@@ -183,7 +179,7 @@ function uploadFile() {
   let input = document.createElement('input');
   input.type = 'file';
   input.onchange = () => {
-    let file = input.files[0]; // Get the first selected file
+    let file = input.files[0];
     if (file) {
       let reader = new FileReader();
       reader.onload = function (e) {
@@ -196,13 +192,11 @@ function uploadFile() {
           }
           
           else {
-            // Set the background color of buttons with alpha 0.25
             button1.style.backgroundColor = generateRGBA(palette.accent, 0.25);
             button2.style.backgroundColor = generateRGBA(palette.accent, 0.25);
             button3.style.backgroundColor = generateRGBA(palette.accent, 0.25);
             button4.style.backgroundColor = generateRGBA(palette.accent, 0.25);
 
-            // Change background color on hover to alpha 0.5
             button1.addEventListener("mouseover", () => {
               button1.style.backgroundColor = generateRGBA(palette.accent, 0.5);
             });
@@ -237,7 +231,7 @@ function uploadFile() {
           document.getElementById("filters").href = "";
         });
       };
-      reader.readAsDataURL(file); // Read the file as a data URL
+      reader.readAsDataURL(file);
     }
   };
   input.click();
@@ -245,21 +239,15 @@ function uploadFile() {
   imageOptions();
 }
 
-// Function to generate a Material Design color palette from an image URL
 function generateMaterialDesignPalette(imageURL, callback) {
-  // Create an image element to load the image
   const img = new Image();
-  img.crossOrigin = "Anonymous"; // Enable cross-origin access to the image
+  img.crossOrigin = "Anonymous";
   
-  // Set up an event listener for when the image is loaded
   img.onload = function () {
-    // Create a Vibrant.js object to extract colors from the image
     const vibrant = new Vibrant(img);
     const swatches = vibrant.swatches();
 
-    // Check if swatches were successfully generated
     if (swatches) {
-      // Extract Material Design color palette
       const palette = {
         accent: swatches.Vibrant.getHex(),
         primaryDark: swatches.DarkVibrant.getHex(),
@@ -267,31 +255,24 @@ function generateMaterialDesignPalette(imageURL, callback) {
         primary: swatches.Muted.getHex(),
       };
   
-      // Execute the callback function with the generated palette
       callback(null, palette);
     }
         
     else {
-      // Error handling if swatches couldn't be generated
       callback("Failed to generate swatches", null);
     }
   };
   
-  // Set the image source to the provided URL
   img.src = imageURL;
 }
 
-// Function to generate an RGBA value with a specified alpha
 function generateRGBA(hex, alpha) {
-  // Remove the "#" symbol if present
   hex = hex.replace(/^#/, '');
 
-  // Parse the hex color to RGB components
   const bigint = parseInt(hex, 16);
   const red = (bigint >> 16) & 255;
   const green = (bigint >> 8) & 255;
   const blue = bigint & 255;
 
-  // Create the RGBA string
   return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 }
