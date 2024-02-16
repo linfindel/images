@@ -335,6 +335,10 @@ function addFilter(filter) {
 function exportImage() {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
+
+  img.style.transition = "0s";
+  img.style.maxWidth = "";
+  img.style.maxHeight = "";
     
   canvas.width = img.width;
   canvas.height = img.height;
@@ -349,24 +353,24 @@ function exportImage() {
 
     const dataURI = canvas.toDataURL("image/jpeg");
 
-    document.getElementById("export").onclick = function() {
-      copyImageURI(dataURI);
-    }
+    img.style.transition = "0.25s ease";
+    img.style.maxWidth = "60vw";
+    img.style.maxHeight = "60vh";
 
-    copyImageURI(dataURI);
+    downloadURI(dataURI, url);
+
+    console.log(url);
   };
 }
 
-function copyImageURI(uri) {
-  navigator.clipboard.writeText(uri);
-
-  document.getElementById("export-text").innerText = "Copied link to filtered image";
-  document.getElementById("export-icon").innerText = "check";
-
-  setTimeout(() => {
-    document.getElementById("export-text").innerText = "Copy link to filtered image";
-    document.getElementById("export-icon").innerText = "content_copy";
-  }, 1000);
+function downloadURI(uri, name) {
+  var link = document.createElement("a");
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  delete link;
 }
 
 function compare() {
