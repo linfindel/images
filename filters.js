@@ -337,6 +337,7 @@ function exportImage() {
   const ctx = canvas.getContext("2d");
 
   img.style.transition = "0s";
+  img.style.opacity = "0";
   img.style.maxWidth = "";
   img.style.maxHeight = "";
     
@@ -344,7 +345,7 @@ function exportImage() {
   canvas.height = img.height;
     
   ctx.filter = window.getComputedStyle(img).getPropertyValue("filter");
-    
+
   const imgElement = new Image();
   imgElement.src = img.src;
   imgElement.crossOrigin = "anonymous";
@@ -354,6 +355,7 @@ function exportImage() {
     const dataURI = canvas.toDataURL("image/jpeg");
 
     img.style.transition = "0.25s ease";
+    img.style.opacity = "1";
     img.style.maxWidth = "60vw";
     img.style.maxHeight = "60vh";
 
