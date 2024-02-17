@@ -21,7 +21,7 @@ if (urlParam) {
   document.getElementById("button3").style.display = "flex";
   document.getElementById("filters").href = `filters.html?url=${urlParam}`;
 
-  generateMaterialDesignPalette(url, (error, palette) => {
+  generateMaterialDesignPalette(urlParam, (error, palette) => {
     if (error) {
       console.error(error);
     }
