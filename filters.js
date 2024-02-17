@@ -333,6 +333,9 @@ function addFilter(filter) {
 }
 
 function exportImage() {
+  document.getElementById("export-icon").innerText = "downloading";
+  document.getElementById("export-text").innerText = "Rendering...";
+
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
@@ -359,6 +362,8 @@ function exportImage() {
     img.style.maxWidth = "60vw";
     img.style.maxHeight = "60vh";
 
+    document.getElementById("export-text").innerText = "Downloading...";
+
     downloadURI(dataURI, url);
 
     console.log(url);
@@ -373,6 +378,11 @@ function downloadURI(uri, name) {
   link.click();
   document.body.removeChild(link);
   delete link;
+
+  setTimeout(() => {
+    document.getElementById("export-icon").innerText = "download";
+    document.getElementById("export-text").innerText = "Download filtered image";
+  }, 1000);
 }
 
 function compare() {
