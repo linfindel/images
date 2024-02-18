@@ -17,7 +17,6 @@ generateMaterialDesignPalette(url, (error, palette) => {
   else {
     document.getElementById("navbar").style.backgroundColor = generateRGBA(palette.accent, 0.25);
     document.getElementById("back").style.backgroundColor = generateRGBA(palette.accent, 0.25);
-    document.getElementById("export").style.backgroundColor = generateRGBA(palette.accent, 0.25);
     document.getElementById("filters").style.backgroundColor = generateRGBA(palette.accent, 0.25);
     document.getElementById("blur").style.backgroundColor = generateRGBA(palette.accent, 0.25);
     document.getElementById("brightness").style.backgroundColor = generateRGBA(palette.accent, 0.25);
@@ -35,14 +34,6 @@ generateMaterialDesignPalette(url, (error, palette) => {
 
     document.getElementById("back").addEventListener("mouseout", () => {
       document.getElementById("back").style.backgroundColor = generateRGBA(palette.accent, 0.25);
-    })
-
-    document.getElementById("export").addEventListener("mouseover", () => {
-      document.getElementById("export").style.backgroundColor = generateRGBA(palette.accent, 0.5);
-    })
-
-    document.getElementById("export").addEventListener("mouseout", () => {
-      document.getElementById("export").style.backgroundColor = generateRGBA(palette.accent, 0.25);
     })
 
     document.getElementById("blur").addEventListener("focusin", () => {
@@ -326,6 +317,19 @@ function addFilter(filter) {
 
   document.getElementById("original-button").addEventListener("mouseout", () => {
     document.getElementById("original-button").style.backgroundColor = generateRGBA(localStorage.getItem("accent"), 0.25);
+  })
+
+  document.getElementById("export").removeAttribute("inert");
+  document.getElementById("export").removeAttribute("class");
+
+  document.getElementById("export").style.backgroundColor = generateRGBA(localStorage.getItem("accent"), 0.25);
+
+  document.getElementById("export").addEventListener("mouseover", () => {
+    document.getElementById("export").style.backgroundColor = generateRGBA(localStorage.getItem("accent"), 0.5);
+  })
+
+  document.getElementById("export").addEventListener("mouseout", () => {
+    document.getElementById("export").style.backgroundColor = generateRGBA(localStorage.getItem("accent"), 0.25);
   })
 
   filters = img.style.filter;
