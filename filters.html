@@ -17,18 +17,18 @@
     <div class="row">
       <a href="index.html" id="back-link">
         <button id="back" tabindex="-99">
-          <span class="material-symbols-rounded">arrow_back</span>
+          <span translate="no" class="material-symbols-rounded">arrow_back</span>
           Back
         </button>
       </a>
 
       <button onclick="exportImage()" id="export" inert class="button-subtle">
-        <span id="export-icon" class="material-symbols-rounded">download</span>
+        <span translate="no" id="export-icon" class="material-symbols-rounded">download</span>
         <span id="export-text">Download filtered image</span>
       </button>
             
       <button onclick="compare()" id="original-button" inert class="button-subtle">
-        <span class="material-symbols-rounded">compare</span>
+        <span translate="no" class="material-symbols-rounded">compare</span>
         <span id="original-text">Show original image</span>
       </button>
     </div>
@@ -41,47 +41,47 @@
 
     <div class="row" style="flex-wrap: wrap;">
       <div id="blur" class="search-box">
-        <span class="material-symbols-rounded">blur_on</span>
+        <span translate="no" class="material-symbols-rounded">blur_on</span>
         <input id="blur-input" oninput="addFilter('blur')" placeholder="Blur (px)" type="text" class="input-search">
       </div>
 
       <div id="brightness" class="search-box">
-        <span class="material-symbols-rounded">brightness_medium</span>
+        <span translate="no" class="material-symbols-rounded">brightness_medium</span>
         <input id="brightness-input" oninput="addFilter('brightness')" placeholder="Brightness (%)" type="text" class="input-search">
       </div>
 
       <div id="contrast" class="search-box">
-        <span class="material-symbols-rounded">contrast</span>
+        <span translate="no" class="material-symbols-rounded">contrast</span>
         <input id="contrast-input" oninput="addFilter('contrast')" placeholder="Contrast (%)" type="text" class="input-search">
       </div>
 
       <div id="grayscale" class="search-box">
-        <span class="material-symbols-rounded">filter_b_and_w</span>
+        <span translate="no" class="material-symbols-rounded">filter_b_and_w</span>
         <input id="grayscale-input" oninput="addFilter('grayscale')" placeholder="Grayscale (%)" type="text" class="input-search">
       </div>
 
       <div id="hue-rotate" class="search-box">
-        <span class="material-symbols-rounded">colorize</span>
+        <span translate="no" class="material-symbols-rounded">colorize</span>
         <input id="hue-rotate-input" oninput="addFilter('hue-rotate')" placeholder="Hue rotate (deg)" type="text" class="input-search">
       </div>
 
       <div id="invert" class="search-box">
-        <span class="material-symbols-rounded">invert_colors</span>
+        <span translate="no" class="material-symbols-rounded">invert_colors</span>
         <input id="invert-input" oninput="addFilter('invert')" placeholder="Invert (%)" type="text" class="input-search">
       </div>
 
       <div id="opacity" class="search-box">
-        <span class="material-symbols-rounded">opacity</span>
+        <span translate="no" class="material-symbols-rounded">opacity</span>
         <input id="opacity-input" oninput="addFilter('opacity')" placeholder="Opacity (%)" type="text" class="input-search">
       </div>
 
       <div id="saturate" class="search-box">
-        <span class="material-symbols-rounded">colors</span>
+        <span translate="no" class="material-symbols-rounded">colors</span>
         <input id="saturate-input" oninput="addFilter('saturate')" placeholder="Saturation (%)" type="text" class="input-search">
       </div>
 
       <div id="sepia" class="search-box">
-        <span class="material-symbols-rounded">history_edu</span>
+        <span translate="no" class="material-symbols-rounded">history_edu</span>
         <input id="sepia-input" oninput="addFilter('sepia')" placeholder="Sepia (%)" type="text" class="input-search">
       </div>
     </div>
